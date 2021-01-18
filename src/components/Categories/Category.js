@@ -1,261 +1,25 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import styled from 'styled-components';
 // import { List, Avatar } from 'antd';
-
+import axios from 'axios'
 // import { Card, Col, Row } from 'antd';
 // import { Card } from 'antd';
 import 'antd/dist/antd.css';
 import CardItem from './CardItem';
 // import { ThemeProvider } from "styled-components";
 
-// const organizations = [
-//     {
-//       id: 1,
-//       name: 'African Services Committee',
-//       services: [
-//         {
-//           name: 'Civil legal services', 
-//           availability: 'for HIV/Aids people, African and Caribbean immigrant women and girls',
-//           age: '',          
-//         },
-//         {
-//           name: 'Benefits Assistance and Education', 
-//           availability: 'for HIV/Aids people, African and Caribbean immigrant women and girls',
-//           age: '',          
-//         },
-//         {
-//           name: 'Housing', 
-//           availability: 'for HIV/Aids people',
-//           age: '',       
-//         },
-//         {
-//           name: 'Attorney help', 
-//           availability: 'for HIV/Aids people, African and Caribbean immigrant women and girls. Some consultations will be subject to a $60 initial consultation fee.',
-//           age: '',          
-//         },
-//         {
-//           name: 'Attorney help', 
-//           availability: 'for HIV/Aids people, African and Caribbean immigrant women and girls. Some consultations will be subject to a $60 initial consultation fee.',
-//           age: '',          
-//         }
-//       ],
-//       contacts: {
-//         name: 'Getachew Fikremariam',
-//         phone: '(212) 2223882 ext. 108',
-//         fax: '(212) 2227067',
-//         email: 'getachewf@africanservices.org',
-//         hours: 'Monday-Friday, 9am-5pm',
-//         address: '429 West 127th Street New York, NY 10027',
-//         zipCode: '10027',
-//         language: [
-//           'Haitian Creole',
-//           'French'
-//         ],
-//         website: 'http://africanservices.org/',
-//       }
-//     },
-  
-//     {
-//       id: 2,
-//       name: 'Cabrini Immigrant Services',
-//       services: [
-//         {
-//           name: 'Legal and social services ', 
-//           availability: 'immigrants (free initial consultation)',
-//           age: '',      
-//         },
-//         {
-//           name: 'Scholarships', 
-//           availability: 'low-income immigrant students who are pursuing higher education',
-//           age: '',          
-//         },
-//         {
-//           name: 'Food pantry', 
-//           availability: 'for HIV/Aids clients',
-//           age: '',          
-//         },
-//         {
-//           name: 'Justice for Immigrants', 
-//           availability: '',
-//           age: '',          
-//         }
-//       ],
-//       contacts: {
-//         name: 'Sr. Kelly Carpenter',
-//         phone: '(212) 7914590',
-//         fax: '(212) 7914592',
-//         email: 'info@cis-nyc.org',
-//         hours: 'MondayFriday by appointment',
-//         address: '139 Henry Street New York, NY 10002',
-//         zipCode: '10002',
-//         language: [
-//           'Spanish'
-//         ],
-//         website: 'http://cis-nyc.org/',
-//       }
-//     },
-  
-//     {
-//       id: 3,
-//       name: 'CAMBA',
-//       services: [
-//         {
-//           name: 'Food Pantry', 
-//           availability: 'need to bring a Photo ID',
-//           age: '',      
-//         },
-//         {
-//           name: 'Housing', 
-//           availability: 'single homeless adults',
-//           age: '',          
-//         },
-//         {
-//           name: 'Free career advisement', 
-//           availability: '',
-//           age: '',          
-//         },
-//         {
-//           name: 'Professional classes', 
-//           availability: 'for immigrant engineers and IT Professionals who are underemployed or unemployed',
-//           age: '',          
-//         }
-//       ],
-//       contacts: {
-//         name: '',
-//         phone: '(718) 287-2600',
-//         fax: '',
-//         email: 'info@camba.org',
-//         hours: '',
-//         address: '1720 Church Avenue, 2nd Fl. Brooklyn, NY 11226',
-//         zipCode: '11226',
-//         language: [],
-//         website: 'https://camba.org/',
-//       }
-//     },
-
-//     {
-//       id: 4,
-//       name: 'African Services Committee',
-//       services: [
-//         {
-//           name: 'Civil legal services', 
-//           availability: 'for HIV/Aids people, African and Caribbean immigrant women and girls',
-//           age: '',          
-//         },
-//         {
-//           name: 'Benefits Assistance and Education', 
-//           availability: 'for HIV/Aids people, African and Caribbean immigrant women and girls',
-//           age: '',          
-//         },
-//         {
-//           name: 'Housing', 
-//           availability: 'for HIV/Aids people',
-//           age: '',       
-//         },
-//         {
-//           name: 'Attorney help', 
-//           availability: 'for HIV/Aids people, African and Caribbean immigrant women and girls. Some consultations will be subject to a $60 initial consultation fee.',
-//           age: '',          
-//         }
-//       ],
-//       contacts: {
-//         name: 'Getachew Fikremariam',
-//         phone: '(212) 2223882 ext. 108',
-//         fax: '(212) 2227067',
-//         email: 'getachewf@africanservices.org',
-//         hours: 'Monday-Friday, 9am-5pm',
-//         address: '429 West 127th Street New York, NY 10027',
-//         zipCode: '10027',
-//         language: [
-//           'Haitian Creole',
-//           'French'
-//         ],
-//         website: 'http://africanservices.org/',
-//       }
-//     },
-  
-//     {
-//       id: 5,
-//       name: 'Cabrini Immigrant Services',
-//       services: [
-//         {
-//           name: 'Legal and social services ', 
-//           availability: 'immigrants (free initial consultation)',
-//           age: '',      
-//         },
-//         {
-//           name: 'Scholarships', 
-//           availability: 'low-income immigrant students who are pursuing higher education',
-//           age: '',          
-//         },
-//         {
-//           name: 'Food pantry', 
-//           availability: 'for HIV/Aids clients',
-//           age: '',          
-//         },
-//         {
-//           name: 'Justice for Immigrants', 
-//           availability: '',
-//           age: '',          
-//         }
-//       ],
-//       contacts: {
-//         name: 'Sr. Kelly Carpenter',
-//         phone: '(212) 7914590',
-//         fax: '(212) 7914592',
-//         email: 'info@cis-nyc.org',
-//         hours: 'MondayFriday by appointment',
-//         address: '139 Henry Street New York, NY 10002',
-//         zipCode: '10002',
-//         language: [
-//           'Spanish'
-//         ],
-//         website: 'http://cis-nyc.org/',
-//       }
-//     },
-  
-//     {
-//       id: 6,
-//       name: 'CAMBA',
-//       services: [
-//         {
-//           name: 'Food Pantry', 
-//           availability: 'need to bring a Photo ID',
-//           age: '',      
-//         },
-//         {
-//           name: 'Housing', 
-//           availability: 'single homeless adults',
-//           age: '',          
-//         },
-//         {
-//           name: 'Free career advisement', 
-//           availability: '',
-//           age: '',          
-//         },
-//         {
-//           name: 'Professional classes', 
-//           availability: 'for immigrant engineers and IT Professionals who are underemployed or unemployed',
-//           age: '',          
-//         }
-//       ],
-//       contacts: {
-//         name: '',
-//         phone: '(718) 287-2600',
-//         fax: '',
-//         email: 'info@camba.org',
-//         hours: '',
-//         address: '1720 Church Avenue, 2nd Fl. Brooklyn, NY 11226',
-//         zipCode: '11226',
-//         language: [],
-//         website: 'https://camba.org/',
-//       }
-//     },
-
-// ]
-
 const Container = styled.div`
-    max-width: 80%;
+max-width: 80%;
+    margin: auto;
+    overflow: hidden;
+    margin-top: 6rem;
+    margin-bottom: 3rem;
+
+    display: flex;
+    ${'' /* flex-wrap: wrap; */}
+
+    padding: 50px 12px;
+    ${'' /* max-width: 80%;
     margin: auto;
     overflow: hidden;
     padding: 0 2rem;
@@ -264,7 +28,6 @@ const Container = styled.div`
 
     display: flex;
     flex-wrap: wrap;
-    ${'' /* flex-direction: row; */}
 
 
   h3 {
@@ -275,35 +38,128 @@ const Container = styled.div`
     text-align: center;
     margin: 10px auto;
     padding-bottom: 2em;
-  }
+  } */}
 `;
 
+const SiderMenu  = styled.div`
+    background: #EAEFF0;
+    box-sizing: border-box;
+    float: left;
+    padding: 20px;
+    margin: 20px;
+    width: 30%;
+`;
 
+const C = styled.div`
+    float: right;
+    position: relative;
 
+    ${'' /* display: flex;
+    flex-wrap: wrap; */}
 
+    h1{
+      box-sizing: border-box;
+    color: #FFF;
+    line-height: 36px;
+    min-height: 74px;
+    padding-left: 100px !important;
+    position: relative;
+    background: #D59740;
+    padding: 15px;
+      ${'' /* display: flex;
+  flex-direction: column;
+  align-items: flex-start; */}
+    }
+`;
 
+const Content = styled.div`
 
-const Category = ({categories, organizations}) => {
+    ${'' /* float: right; */}
+    ${'' /* position: relative; */}
+    display: flex;
+    ${'' /* flex-wrap: wrap; */}
+`;
+
+const Button = styled.button`
+    background: #2E6072;
+    border: none;
+    box-sizing: border-box;
+    color: #FFF;
+    cursor: pointer;
+    display: block;
+    font: normal 16px/18px "National-Medium", sans-serif;
+    padding: 15px 12px;
+    margin: 20px 0;
+    text-align: center;
+    text-decoration: none;
+    text-transform: uppercase;
+    width: 100%;
+
+    :hover {
+        color: #fff;
+        
+    } 
+
+    @media (max-width: 500px) {
+        font-size: 1rem;
+    }
+`
+
+const Category = ({categories, match}) => {
   const inialTheme = '';
-  const [theme, setTheme] = useState(inialTheme);
-
+  const [organizationsCategory, setOrganizationsCategory] = useState([]);
   
+  const categoryID = match.params.id;
+  // const categoryName = (categories  == null) ? '' : categories[categoryID-1].name;
+  console.log(categories)
+  // console.log(categoryName)
+  console.log(categories[categoryID-1])
 
-  
+  useEffect( () => {
+    organizationsList();
+  }, [categoryID])
 
-  const changeContent = (e) => {
-    e.preventDefault()
-    setTheme('100%');
+  const organizationsList = () => {
+    axios.get(`http://localhost:3000/categories/${categoryID}/organizations`)
+    .then(response => {
+      console.log(response);
+      setOrganizationsCategory(response.data)
+    })
+    .catch(error => console.log('api errors:', error))
   }
+
+  // const organizationsList = () => {
+  //   fetch("http://localhost:3000/categories/categoryID/organizations", {
+  //     method: "GET",
+  //     headers: {
+  //       "Content-Type": "application/json"
+  //     }
+  //   })
+  //   .then(response => response.json())
+  //   .then(data => console.log(data))
+  //   .catch(err => console.error(err));
+  // }
 
   return (
       <Container>
-        <h3>Category 1</h3>
-            
-
-        {organizations.map((organization) => (
-          <CardItem key={organization.id} organization={organization}/>
+      <SiderMenu>
+            <Button as="a" href="/">All Organizations</Button>
+            <Button as="a" href="/">Fill the form</Button>
+        </SiderMenu>
+        <C>
+        <h1>Category {categoryID}</h1>
+        <Content>
+        {/* <h3>{categories[0].name}</h3> */}
+        
+        {organizationsCategory.map((organization) => (
+          <CardItem 
+            key={organization.id} 
+            organization={organization}
+            categoryID={categoryID}
+          />
         ))}
+        </Content>
+        </C>
       </Container>
   )
 }

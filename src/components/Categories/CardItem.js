@@ -40,8 +40,8 @@ const gridStyle = {
   
 };
 
-const CardItem = ({organization}) => {
-    return (
+const CardItem = ({organization, categoryID}) => {
+    return ( 
         <Card.Grid  style={gridStyle}>
             <Card>
             <Title>
@@ -49,12 +49,13 @@ const CardItem = ({organization}) => {
             </Title>
             <Ul>
                 <p>Services provided:</p>
-                {organization.services.map((service, index) => (
+                {organization.address}
+                {/* {organization.services.map((service, index) => (
                     <li key={index}>{service.name}</li>
-                ))}
+                ))} */}
             </Ul>
                 <div>
-                <Link to={`/category/${organization.id}`}>More</Link>
+                <Link to={`/category/${categoryID}/organizations/${organization.id}`}>More</Link>
                     {/* <a href="/categories/1" >More</a> */}
                 </div>
             </Card>

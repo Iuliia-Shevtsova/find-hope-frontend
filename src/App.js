@@ -75,18 +75,18 @@ function App() {
             <Route 
               path="/categories" 
               render={props => (
-              <AllCategories {...props} categories={categories}/>
+              <AllCategories {...props} categories={categories} organizations={organizations}/>
               )}
             />
             {/* <Route exact path="/categories" component={AllCategories} /> */}
             <Route 
-              path="/categories/:id"
+              exact path="/category/:id/organizations"
               render={props => (
               <Category {...props} categories={categories} organizations={organizations}/>
               )}
             />
             {/* <Route exact path="/category" component={Category} /> */}
-            <Route path="/categories/:id/organization" component={Organization} />
+            <Route path="/category/:id/organizations/:org_id" component={Organization} />
           </Switch>
     </Router>
   );

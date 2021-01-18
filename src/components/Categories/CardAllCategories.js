@@ -1,6 +1,7 @@
 import React from 'react'
+import { Route } from 'react-router-dom';
 import styled from 'styled-components'
-
+// import Category from './Category';
 
 const StyledContainer = styled.div`
     padding: 25px 12px 18px;
@@ -62,7 +63,7 @@ const AButton = styled.button`
 
 const imgUrl = (id) => require(`./img/${id}.png`).default;
 
-const CardAllCategories = ({ name, id, }) => {
+const CardAllCategories = ({ category, organizations, match}) => {
 
     const changeColor = (param) =>  {
         switch(param) {
@@ -83,10 +84,26 @@ const CardAllCategories = ({ name, id, }) => {
     };
 
         return ( 
-            <StyledContainer cardColor={changeColor(id)}>
-                {/* <Title>{name}</Title> */}
-                <AButton as="a" href={`/categories/${id}`} alt={name}><img src={imgUrl(id)}/>{name}</AButton>
+            <StyledContainer cardColor={changeColor(category.id)}>
+                <AButton 
+                    as="a" 
+                    href={`category/${category.id}/organizations`} 
+                    alt={''}
+                >
+                    <img src={imgUrl(category.id)}/>
+                    {category.name}
+                </AButton>
+
+                 {/* <Route path={`${match.url}/${category.id}`} component={Category} /> */}
+                {/* <Route 
+                    path={`${match.path}/${category.id}`}
+                    render={props => (
+                    <Category {...props} category={category} organizations={organizations}/>
+                    )}
+                /> */}
             </StyledContainer>
+            
+               
         )    
     };
 

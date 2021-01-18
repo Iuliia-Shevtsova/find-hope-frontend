@@ -18,7 +18,7 @@ const Navbar = ({categories}) => {
        <Menu.Divider />
        {categories.map((category) => (
         <Menu.Item key={category.id}>
-          <Link to={`/categories/${category.id}`}>{category.name}</Link>
+          <Link to={`/category/${category.id}/organizations`}>{category.name}</Link>
         </Menu.Item>
         ))}
       {/* <Menu.Item key="1">

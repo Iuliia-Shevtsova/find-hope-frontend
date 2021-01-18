@@ -155,9 +155,12 @@ const StyledContainer = styled.div`
     flex-wrap: wrap;
 ` 
 
-const AllCategories = ({categories}) => {
+const AllCategories = ({categories, organizations, match}) => {
+
+    
+    console.log(categories)
+
     return (
-        
         <Container>
         <SiderMenu>
             <Button as="a" href="/">All Organizations</Button>
@@ -166,8 +169,11 @@ const AllCategories = ({categories}) => {
         <Content>
             {categories.map((category) => (
                 <CardAllCategories
-                    name={category.name}
-                    id={category.id}
+                    key={category.id}
+                    category={category}
+                    organizations={organizations}
+                    match={match}
+                    // id={category.id}
                 />
             ))}
         </Content>
