@@ -8,39 +8,6 @@ import 'antd/dist/antd.css';
 // import { ThemeProvider } from "styled-components";
 import CardAllCategories from './CardAllCategories'
 
-// const categories = [
-//     {
-//         id: 1,
-//         name: 'Legal Services',
-//         img: ''
-//     },
-//     {
-//         id: 2,
-//         name: 'Health',
-//         img: ''
-//     },
-//     {
-//         id: 3,
-//         name: 'Education',
-//         img: ''
-//     },
-//     {
-//         id: 4,
-//         name: 'Job',
-//         img: ''
-//     },
-//     {
-//         id: 5,
-//         name: 'Food Services',
-//         img: ''
-//     },
-//     {
-//         id: 6,
-//         name: 'English classes',
-//         img: ''
-//     },
-
-// ]
 
 const Container = styled.div`
     max-width: 80%;
@@ -71,10 +38,11 @@ const SiderMenu  = styled.div`
     float: left;
     padding: 20px;
     margin: 20px;
-    width: 30%;
+    max-width: 25%;
 `;
 
 const Content = styled.div`
+    max-width: 80%;
     float: right;
     position: relative;
     display: flex;
