@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
+import Reviews from './Reviews';
 
 const StyledContainer = styled.div`
   ${'' /* border: 1px solid white; */}
@@ -13,7 +14,7 @@ const StyledContainer = styled.div`
 const GridContainer = styled.div`
   display: grid;
   grid-template-columns: 60% auto;
-  grid-template-rows: 120px auto 100px;
+  grid-template-rows: 120px auto auto;
   ${'' /* grid-row-gap: 10px; */}
   width: 100%;
   ${'' /* padding: 20px; */}
@@ -38,12 +39,6 @@ const GridItemReviews = styled.div`
     grid-column-end: 3;
     padding: 25px 12px 18px 24px;
     background: white;
-`
-
-const Container = styled.div`
-  ${'' /* border: 1px solid white; */}
-  padding: 25px 12px 18px;
-  background: white;
 `
 
 const Title = styled.h2`
@@ -110,8 +105,6 @@ const HeadInfo = styled.div`
     padding: 15px;
     margin: 15px;
     }
-
-    
 `;
 
 const Image = styled.div`
@@ -139,9 +132,9 @@ const OrganizationCard = ({
     twitter,
     avg_score,
     reviews,
-    actions,
-}) => (
-  <StyledContainer>
+}) => {
+    return (
+<StyledContainer>
     <GridContainer>
         <GridItemHeader>
             <HeadInfo>
@@ -159,25 +152,15 @@ const OrganizationCard = ({
         </GridItemServices>
         <GridItemReviews>
             Score: {avg_score}
+            <Reviews 
+                reviews={reviews}
+            />
         </GridItemReviews>
-        
     </GridContainer>
-    {/* <HeadInfo>
-        <Image>
-            <img src='https://logo.clearbit.com/camba.org'/>
-        </Image>
-        <h1>gkgjh</h1>
-    </HeadInfo>
-    <Container>
-        <Title>{title}</Title>
-        <Description>{description}</Description>
-        <Actions>
-        {actions.map(({ label }) => (
-            <Action>{label}</Action>
-        ))}
-        </Actions>
-    </Container> */}
   </StyledContainer>
-);
+    )
+}
+    
+
 
 export default OrganizationCard
