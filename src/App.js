@@ -5,10 +5,10 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import './css/style.css';
 import Navbar from './components/Navbar';
 import Landing from './components/Landing';
-import Category from './components/Categories/Category2';
+import Category from './components/Categories/category_organizations/Category';
 // import Parent2 from './components/Categories/Parent2';
-import AllCategories from './components/Categories/AllCategories';
-import Organization from './components/Categories/organizations/OrganizationCardParent';
+import AllCategories from './components/Categories/allCategories/AllCategories';
+import Organization from './components/Categories/organizations/Organization';
 import GlobalStyle from './css/GlobalStyle';
 // import { ThemeProvider } from "styled-components";
 import 'antd/dist/antd.css';
@@ -83,11 +83,17 @@ function App() {
             <Route 
               exact path="/category/:id/organizations"
               render={props => (
-              <Category {...props} categories={categories} organizations={organizations}/>
+              <Category {...props} categories={categories} />
               )}
             />
             {/* <Route exact path="/card" component={Parent2} /> */}
-            <Route path="/category/:id/organizations/:org_id" component={Organization} />
+            <Route 
+              path="/category/:id/organizations/:org_id"
+              render={props => (
+              <Organization {...props} organizations={organizations}/>
+              )}
+            />
+            {/* <Route path="/category/:id/organizations/:org_id" component={Organization} /> */}
           </Switch>
     </Router>
   );

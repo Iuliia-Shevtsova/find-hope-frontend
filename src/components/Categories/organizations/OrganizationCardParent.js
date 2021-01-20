@@ -1,24 +1,24 @@
 import React from 'react'
 import styled from 'styled-components'
 import { FaCommentAlt, FaThumbsUp, FaRegEye } from 'react-icons/fa'
-import Card from './OrganizationCard'
+import OrganizationCard from './OrganizationCard2'
 
 const StyledRoot = styled.div`
-    max-width: 70%;
     margin: auto;
     overflow: hidden;
-    margin-top: 6rem;
+    ${'' /* margin-top: 6rem; */}
     margin-bottom: 3rem;
     padding: 30px;
     ${'' /* background: blue; */}
+    width: 100%;
 `
-const StyledContainer = styled.div`
-  ${'' /* width: 100px; */}
-  width: 100%;
-  margin: auto;
-`
+// const StyledContainer = styled.div`
+//   ${'' /* width: 100px; */}
+//   width: 100%;
+//   margin: auto;
+// `
 
-const Organization = () => {
+const OrganizationCardParent = ({organization}) => {
   const date = new Date().toLocaleDateString()  
   const onCommentClick = () => alert('You clicked comments')
   const onLikesClick = () => alert('You clicked comments')
@@ -50,23 +50,25 @@ const Organization = () => {
     },
   ]  
   
+  console.log(organization)
+
   return (
     <StyledRoot>
-      <StyledContainer>
-        <Card
-          title="The Benefits of Green Apples"
-          date={date}
-          description="Green apples have a high fiber content which helps in increasing the
-      body's metabolism. While consuming an apple, make sure that you're not
-      tossing the peel in the trash. Consuming apple with its peel improves
-      the overall health. Due to its high fiber content, apple helps in
-      detoxification process. It keeps the liver and digestive system away
-      from harmful elements."
+      {/* <StyledContainer> */}
+        <OrganizationCard
+          // organization = {organization}
+          name={organization.name}
+          address={organization.address}
+          website={organization.website}
+          facebook={organization.facebook}
+          twitter={organization.twitter}
+          avg_score={organization.avg_score}
+          reviews={organization.reviews_list}
           actions={buttons}
         />
-      </StyledContainer>
+      {/* </StyledContainer> */}
     </StyledRoot>
   )
 }
 
-export default Organization;
+export default OrganizationCardParent;

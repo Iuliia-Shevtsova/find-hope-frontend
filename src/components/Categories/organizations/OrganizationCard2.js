@@ -5,9 +5,41 @@ const StyledContainer = styled.div`
   ${'' /* border: 1px solid white; */}
   box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;  
   padding: 0;
-  background: rgba(32,178,170, 0.5);
-  background: linear-gradient(45deg, white, rgba(32,178,170, 0.5));
+  ${'' /* background: rgba(32,178,170, 0.5);
+  background: linear-gradient(45deg, white, rgba(32,178,170, 0.5)); */}
+  width: 100%
 `
+
+const GridContainer = styled.div`
+  display: grid;
+  grid-template-columns: 60% auto;
+  grid-template-rows: 120px auto 100px;
+  ${'' /* grid-row-gap: 10px; */}
+  width: 100%;
+  ${'' /* padding: 20px; */}
+`
+const GridItemHeader = styled.div`
+    grid-column-start: 1;
+    grid-column-end: 3;
+`
+
+const GridItemInfo = styled.div`
+    padding: 25px 12px 18px 24px;
+    background: white;
+`
+
+const GridItemServices = styled.div`
+    padding: 25px 24px 18px 12px;
+    background: white;
+`
+
+const GridItemReviews = styled.div`
+    grid-column-start: 1;
+    grid-column-end: 3;
+    padding: 25px 12px 18px 24px;
+    background: white;
+`
+
 const Container = styled.div`
   ${'' /* border: 1px solid white; */}
   padding: 25px 12px 18px;
@@ -67,15 +99,12 @@ const HeadInfo = styled.div`
     margin: 0;
     display: flex;
     align-items: baseline;
-    ${'' /* justify-content: flex-start; */}
+    background: linear-gradient(45deg, white, rgba(32,178,170, 0.5));
 
     h1{
-      ${'' /* box-sizing: border-box; */}
     color: #008080;
     font-weight: bold;
-    ${'' /* line-height: 36px; */}
     min-height: 74px;
-    ${'' /* padding-left: 100px !important; */}
     position: relative;
     
     padding: 15px;
@@ -97,17 +126,43 @@ const Image = styled.div`
     img {
         width: 80px;
         height: 80px;
-        margin: auto ;
+        margin-left: auto ;
+        margin-right: auto ;
     }
 `;
 
 const OrganizationCard = ({
-  title,
-  description,
-  actions,
+    name,
+    address,
+    website,
+    facebook,
+    twitter,
+    avg_score,
+    reviews,
+    actions,
 }) => (
   <StyledContainer>
-    <HeadInfo>
+    <GridContainer>
+        <GridItemHeader>
+            <HeadInfo>
+                <Image>
+                    <img src='https://logo.clearbit.com/camba.org'/>
+                </Image>
+                <h1>{name}</h1>
+            </HeadInfo>
+        </GridItemHeader>
+        <GridItemInfo>
+            <Description>Address: {address}</Description>
+        </GridItemInfo>
+        <GridItemServices>
+            <Description>{website, facebook, twitter}</Description>    
+        </GridItemServices>
+        <GridItemReviews>
+            Score: {avg_score}
+        </GridItemReviews>
+        
+    </GridContainer>
+    {/* <HeadInfo>
         <Image>
             <img src='https://logo.clearbit.com/camba.org'/>
         </Image>
@@ -121,7 +176,7 @@ const OrganizationCard = ({
             <Action>{label}</Action>
         ))}
         </Actions>
-    </Container>
+    </Container> */}
   </StyledContainer>
 );
 

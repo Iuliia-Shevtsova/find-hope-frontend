@@ -95,12 +95,18 @@ const MoreButton = styled.button`
     opacity: 0.8;
   }
 `
+const Score = styled.div`
+
+`;
+
 
 const Card = ({
   title,
   services,
   categoryID,
-  organizationID
+  organizationID,
+  reviews,
+  avg_score
 }) => (
   <StyledContainer>
     <Title>{title}</Title>
@@ -113,6 +119,7 @@ const Card = ({
             </li>
         ))}
         </Ul>
+        <Score>Score is {avg_score}</Score>
     </Description>
     <Actions>
         <MoreButton as="a" href={`/category/${categoryID}/organizations/${organizationID}`}>

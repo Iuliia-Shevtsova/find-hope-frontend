@@ -87,42 +87,6 @@ const Title  = styled.div`
 `;
 
 
-
-const gridStyle = {
-    width: '30%',
-    textAlign: 'center',
-    // margin: '10px',
-    padding: '0px',
-    flexDirection: 'row',
-    width: '300px', 
-    height: '300px', 
-    margin: '20px',
-    
-};
-
-const CardItem  = styled.div`
-    width: '30%';
-    textAlign: 'center';
-    margin: '10px';
-    padding: '0px';
-    flexDirection: 'row';
-    width: '300px'; 
-    height: '300px'; 
-    margin: '20px';
-    background: white;
-`;
-
-const StyledRoot = styled.div`
-  padding: 50px 12px;
-`
-const StyledContainer = styled.div`
-  max-width: 80%;
-  width: 100%;
-  margin: auto;
-  display: flex;
-    flex-wrap: wrap;
-` 
-
 const AllCategories = ({categories, organizations, match}) => {
 
     

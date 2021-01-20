@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import styled from 'styled-components'
-import Card from './CardItem2'
+import Card from './CardItem'
 import axios from 'axios'
 
 const StyledRoot = styled.div`
@@ -21,22 +21,33 @@ const StyledContainer = styled.div`
 
 const Parent = ({organization, organizationID, categoryID}) => {
 
-    const [categoriesOrganization, setcategoriesOrganization] = useState([]);
+    const [categoriesOrganization, setCategoriesOrganization] = useState([]);
+    // const [reviewsOrganization, setReviewssOrganization] = useState([]);
     // let organizationID=organization.id;
-
+    console.log(organization.avg_score);
+    
     useEffect( () => {
         organizationsList();
-      // }, [categoryID])
+        // reviewsList();
       }, [organizationID, categoriesOrganization.length])
     
       const organizationsList = () => {
         axios.get(`http://localhost:3000/organizations/${organizationID}/categories`)
         .then(response => {
           console.log(response);
-          setcategoriesOrganization(response.data)
+          setCategoriesOrganization(response.data)
         })
         .catch(error => console.log('api errors:', error))
       }
+
+      // const reviewsList = () => {
+      //   axios.get(`http://localhost:3000/organizations/${organizationID}/reviews`)
+      //   .then(response => {
+      //     console.log(response);
+      //     setReviewssOrganization(response.data)
+      //   })
+      //   .catch(error => console.log('api errors:', error))
+      // }
   
   return (
     <StyledRoot>
@@ -46,6 +57,8 @@ const Parent = ({organization, organizationID, categoryID}) => {
           services={categoriesOrganization}
           categoryID={categoryID}
           organizationID={organizationID}
+          reviews={organization.reviews_list}
+          avg_score={organization.avg_score}
         />
       </StyledContainer>
     </StyledRoot>
