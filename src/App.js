@@ -6,7 +6,7 @@ import './css/style.css';
 import Navbar from './components/Navbar';
 import Landing from './components/Landing';
 import Category from './components/Categories/category_organizations/Category';
-// import Parent2 from './components/Categories/Parent2';
+import ReviewCardParent from './components/Categories/organizations/reviews/ReviewCardParent';
 import AllCategories from './components/Categories/allCategories/AllCategories';
 import Organization from './components/Categories/organizations/Organization';
 import GlobalStyle from './css/GlobalStyle';
@@ -86,7 +86,7 @@ function App() {
               <Category {...props} categories={categories} />
               )}
             />
-            {/* <Route exact path="/card" component={Parent2} /> */}
+            <Route exact path="/review" component={ReviewCardParent} />
             <Route 
               path="/category/:id/organizations/:org_id"
               render={props => (

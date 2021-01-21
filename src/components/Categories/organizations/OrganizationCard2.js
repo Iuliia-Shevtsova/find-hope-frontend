@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import Reviews from './Reviews';
+import Reviews from './reviews/Reviews';
 
 const StyledContainer = styled.div`
   ${'' /* border: 1px solid white; */}
@@ -126,6 +126,7 @@ const Image = styled.div`
 
 const OrganizationCard = ({
     name,
+    organizationID,
     address,
     website,
     facebook,
@@ -134,30 +135,32 @@ const OrganizationCard = ({
     reviews,
 }) => {
     return (
-<StyledContainer>
-    <GridContainer>
-        <GridItemHeader>
-            <HeadInfo>
-                <Image>
-                    <img src='https://logo.clearbit.com/camba.org'/>
-                </Image>
-                <h1>{name}</h1>
-            </HeadInfo>
-        </GridItemHeader>
-        <GridItemInfo>
-            <Description>Address: {address}</Description>
-        </GridItemInfo>
-        <GridItemServices>
-            <Description>{website, facebook, twitter}</Description>    
-        </GridItemServices>
-        <GridItemReviews>
-            Score: {avg_score}
-            <Reviews 
-                reviews={reviews}
-            />
-        </GridItemReviews>
-    </GridContainer>
-  </StyledContainer>
+      <StyledContainer>
+        <GridContainer>
+            <GridItemHeader>
+                <HeadInfo>
+                    <Image>
+                        <img src='https://logo.clearbit.com/camba.org'/>
+                    </Image>
+                    <h1>{name}</h1>
+                </HeadInfo>
+            </GridItemHeader>
+            <GridItemInfo>
+                <Description>Address: {address}</Description>
+            </GridItemInfo>
+            <GridItemServices>
+                <Description>{website, facebook, twitter}</Description>    
+            </GridItemServices>
+            <GridItemReviews>
+                Score: {avg_score}
+                <Reviews 
+                    reviews_list={reviews}
+                    organization_name={name}
+                    organizationID={organizationID}
+                />
+            </GridItemReviews>
+        </GridContainer>
+      </StyledContainer>
     )
 }
     

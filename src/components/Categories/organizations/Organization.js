@@ -98,6 +98,7 @@ const Organization = ({organizations, match}) => {
         <Content>
             <OrganizationCardParent 
                 organization = {organization}
+                organizationID={organizationID}
             />
         </Content>
         </Container>

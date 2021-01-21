@@ -12,13 +12,14 @@ const StyledRoot = styled.div`
     ${'' /* background: blue; */}
     width: 100%;
 `
-const OrganizationCardParent = ({organization}) => {
+const OrganizationCardParent = ({organization, organizationID}) => {
   
   console.log(organization)
 
   return (
     <StyledRoot>
         <OrganizationCard
+          organizationID={organizationID}
           name={organization.name}
           address={organization.address}
           website={organization.website}

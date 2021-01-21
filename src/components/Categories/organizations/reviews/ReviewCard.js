@@ -4,7 +4,8 @@ import styled from 'styled-components'
 const StyledContainer = styled.div`
   border: 1px solid white;
   padding: 25px 12px 18px;
-  background: linear-gradient(45deg, darkgreen, lightgreen);
+  background: linear-gradient(
+    45deg, darkgreen, lightgreen);
 `
 const Title = styled.h2`
   color: #fff;
@@ -61,7 +62,6 @@ const Action = styled.button`
     background: darkgreen;
   }
 `
-
 const Card = ({
   title,
   date,
@@ -82,5 +82,4 @@ const Card = ({
     </Actions>
   </StyledContainer>
 )
-
 export default Card
