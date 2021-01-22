@@ -1,10 +1,10 @@
 import React from 'react'
 import styled from 'styled-components'
-import { FaCommentAlt, FaThumbsUp, FaRegEye } from 'react-icons/fa'
 import Card from './ReviewCard'
 
 const StyledRoot = styled.div`
   padding: 50px 12px;
+  
 `
 const StyledContainer = styled.div`
   max-width: 550px;
@@ -12,51 +12,25 @@ const StyledContainer = styled.div`
   margin: auto;
 `
 
-const Parent = () => {
-  const date = new Date().toLocaleDateString()  
-  const onCommentClick = () => alert('You clicked comments')
-  const onLikesClick = () => alert('You clicked comments')
-  const onViewsClick = () => alert('You clicked comments')  
-  const buttons = [
-    {
-      label: (
-        <>
-          <FaCommentAlt /> 0 Comments
-        </>
-      ),
-      onClick: onCommentClick,
-    },
-    {
-      label: (
-        <>
-          <FaThumbsUp /> 242 Likes
-        </>
-      ),
-      onClick: onLikesClick,
-    },
-    {
-      label: (
-        <>
-          <FaRegEye /> 187288 Views
-        </>
-      ),
-      onClick: onViewsClick,
-    },
-  ]  
+const Parent = ({handleDestroy, handleEdit, title, description, score, id, date, actions}) => {
+  // const date = new Date().toLocaleDateString()  
   
+  
+  const button = 777
+
   return (
+
     <StyledRoot>
       <StyledContainer>
         <Card
-          title="The Benefits of Green Apples"
+          handleDestroy={handleDestroy}
+          handleEdit={handleEdit}
+          title={title}
+          description={description}
+          score={score}
+          id={id}
+          actions={actions}
           date={date}
-          description="Green apples have a high fiber content which helps in increasing the
-      body's metabolism. While consuming an apple, make sure that you're not
-      tossing the peel in the trash. Consuming apple with its peel improves
-      the overall health. Due to its high fiber content, apple helps in
-      detoxification process. It keeps the liver and digestive system away
-      from harmful elements."
-          actions={buttons}
         />
       </StyledContainer>
     </StyledRoot>

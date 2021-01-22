@@ -1,6 +1,6 @@
-import React from 'react'
-import styled from 'styled-components'
-import { Link } from 'react-router-dom';
+import React from 'react';
+import styled from 'styled-components';
+import { Rate } from 'antd';
 
 const StyledContainer = styled.div`
   border: 1px solid white;
@@ -96,7 +96,8 @@ const MoreButton = styled.button`
   }
 `
 const Score = styled.div`
-
+  margin-left: auto;
+  margin-right: auto;
 `;
 
 
@@ -119,7 +120,7 @@ const Card = ({
             </li>
         ))}
         </Ul>
-        <Score>Score is {avg_score}</Score>
+        <Score><Rate disabled value={avg_score} /></Score>
     </Description>
     <Actions>
         <MoreButton as="a" href={`/category/${categoryID}/organizations/${organizationID}`}>

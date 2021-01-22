@@ -129,15 +129,6 @@ const Category = ({categories, match}) => {
         <C>
         <h1>Category {categoryID}</h1>
         <Content>
-        {/* <Parent></Parent>
-        <Parent></Parent>
-        <Parent></Parent>
-        <Parent></Parent>
-        <Parent></Parent> */}
-        {/* <h3>{categories[0].name}</h3> */}
-        {/* <h1>Category {categoryID}</h1>
-        <h1>Category {categoryID}</h1>
-        <h1>Category {categoryID}</h1> */}
 
         {organizationsCategory.map((organization) => (
           <Parent 

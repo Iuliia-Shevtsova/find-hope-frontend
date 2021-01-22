@@ -1,9 +1,9 @@
 import React, {useState} from 'react';
 import styled from 'styled-components';
 // import { List, Avatar } from 'antd';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 // import { Card, Col, Row } from 'antd';
-import { Card } from 'antd';
+// import { Card } from 'antd';
 import 'antd/dist/antd.css';
 // import { ThemeProvider } from "styled-components";
 import CardAllCategories from './CardAllCategories'
@@ -17,19 +17,9 @@ const Container = styled.div`
     margin-bottom: 3rem;
 
     display: flex;
-    ${'' /* flex-wrap: wrap; */}
 
     padding: 50px 12px;
 
-  ${'' /* h3 {
-    flex-basis: 100%;
-    height: 0;
-
-    font-weight: bold;
-    text-align: center;
-    margin: 10px auto;
-    padding-bottom: 2em;
-  } */}
 `;
 
 const SiderMenu  = styled.div`

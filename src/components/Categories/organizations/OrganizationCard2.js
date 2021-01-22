@@ -1,6 +1,8 @@
 import React from 'react'
 import styled from 'styled-components'
 import Reviews from './reviews/Reviews';
+import { Link } from 'react-router-dom';
+
 
 const StyledContainer = styled.div`
   ${'' /* border: 1px solid white; */}
@@ -15,9 +17,7 @@ const GridContainer = styled.div`
   display: grid;
   grid-template-columns: 60% auto;
   grid-template-rows: 120px auto auto;
-  ${'' /* grid-row-gap: 10px; */}
   width: 100%;
-  ${'' /* padding: 20px; */}
 `
 const GridItemHeader = styled.div`
     grid-column-start: 1;
@@ -41,51 +41,15 @@ const GridItemReviews = styled.div`
     background: white;
 `
 
-const Title = styled.h2`
+
+const Description = styled.div`
   color: #2E6072;
-  font-weight: 300;
-  @media (max-width: 500px) {
-    font-size: 1rem;
+  font-weight: bold;
+  p{
+    font-weight: 300;
   }
-`
-const Description = styled.p`
-  color: #2E6072;
-  font-weight: 300;
   @media (max-width: 500px) {
     font-size: 0.75rem;
-  }
-`
-const Actions = styled.div`
-  color: #333;
-  display: flex;
-  align-items: center;
-  svg {
-    transform: translateY(2px);
-    margin-right: 5px;
-  }
-  @media (max-width: 500px) {
-    flex-direction: column;
-    & button {
-      width: 100%;
-      margin-bottom: 4px;
-      font-size: 0.65rem;
-    }
-  }
-`
-const Action = styled.button`
-  margin: 0 5px;
-  padding: 8px 14px;
-  background: rgba(155, 155, 155, 0.2);
-  color: #2E6072;
-  cursor: pointer;
-  border: 1px solid #fff;
-  outline: 0;
-  font-weight: 300;
-  :hover {
-    opacity: 0.8;
-  }
-  :active {
-    background: darkgreen;
   }
 `
 
@@ -101,7 +65,6 @@ const HeadInfo = styled.div`
     font-weight: bold;
     min-height: 74px;
     position: relative;
-    
     padding: 15px;
     margin: 15px;
     }
@@ -124,15 +87,24 @@ const Image = styled.div`
     }
 `;
 
+const Ul  = styled.div`
+    list-style-type: circle;
+    text-align: left; 
+    padding-left: 10px;
+    padding-bottom: 0px;
+    margin-bottom: 10px;
+    margin-top: 10px;
+
+    li{
+      padding-bottom: 10px;
+    }
+`
+
+
 const OrganizationCard = ({
-    name,
     organizationID,
-    address,
-    website,
-    facebook,
-    twitter,
-    avg_score,
-    reviews,
+    organization,
+    categories_list
 }) => {
     return (
       <StyledContainer>
@@ -140,22 +112,34 @@ const OrganizationCard = ({
             <GridItemHeader>
                 <HeadInfo>
                     <Image>
-                        <img src='https://logo.clearbit.com/camba.org'/>
+                        <img src={organization.url}/>
                     </Image>
-                    <h1>{name}</h1>
+                    <h1>{organization.name}</h1>
                 </HeadInfo>
             </GridItemHeader>
             <GridItemInfo>
-                <Description>Address: {address}</Description>
+                <Description>Address: <p>{organization.address}</p></Description>
+                <Description>Contact Person: <p>{organization.contact_name}</p></Description>
+                <Description>Hours: <p>{organization.hours}</p></Description>
+                <Description>Tel: <p>{organization.phone}</p></Description>
+                <Description>Fax: <p>{organization.fax}</p></Description>
+                <Link style={{paddingRight:'20px'}} to={`/${organization.facebook}`}>Facebook</Link>
+                <Link to={`/${organization.twitter}`}>Twitter</Link>
             </GridItemInfo>
             <GridItemServices>
-                <Description>{website, facebook, twitter}</Description>    
+                <Description> Services provided: </Description>  
+                  <Ul>
+                    {categories_list.map((service, index) => (
+                        <li key={index}>
+                            {service.name}
+                        </li>
+                    ))}
+                  </Ul>
             </GridItemServices>
             <GridItemReviews>
-                Score: {avg_score}
                 <Reviews 
-                    reviews_list={reviews}
-                    organization_name={name}
+                    reviews_list={organization.reviews}
+                    organization_name={organization.name}
                     organizationID={organizationID}
                 />
             </GridItemReviews>

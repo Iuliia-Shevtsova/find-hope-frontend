@@ -27,7 +27,7 @@ const Header = ({reviews, average}) => {
                 <UserReviewCount>
                     <span className="review-count">{reviews ? reviews.length : 0}</span> user reviews
                 </UserReviewCount>
-                <Rate disabled defaultValue={average} />
+                <Rate disabled value={average} />
                 <ScoreOutOf>{average.toFixed(1)} out of 5 stars</ScoreOutOf>       
             </div>
         </Wrapper>

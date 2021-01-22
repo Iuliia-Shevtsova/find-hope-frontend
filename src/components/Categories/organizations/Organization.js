@@ -74,10 +74,12 @@ const Organization = ({organizations, match}) => {
     // console.log(orgID)
 
     const [organization, setOrganization] = useState({});
+    const [categoriesOrganization, setCategoriesOrganization] = useState([]);
 
     useEffect( () => {
         organizationInfo();
-      }, [organizationID])
+        categoriesList();
+      }, [organizationID, categoriesOrganization.length])
     
       const organizationInfo = () => {
         axios.get(`http://localhost:3000/organizations/${organizationID}`)
@@ -89,6 +91,18 @@ const Organization = ({organizations, match}) => {
     }
 
 
+    
+    console.log(organization.avg_score);
+    
+      const categoriesList = () => {
+        axios.get(`http://localhost:3000/organizations/${organizationID}/categories`)
+        .then(response => {
+          console.log(response);
+          setCategoriesOrganization(response.data)
+        })
+        .catch(error => console.log('api errors:', error))
+      }
+
     return (
         <Container>
         <SiderMenu>
@@ -99,6 +113,7 @@ const Organization = ({organizations, match}) => {
             <OrganizationCardParent 
                 organization = {organization}
                 organizationID={organizationID}
+                categories_list={categoriesOrganization}
             />
         </Content>
         </Container>

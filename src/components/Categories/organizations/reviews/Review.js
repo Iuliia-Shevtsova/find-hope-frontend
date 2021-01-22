@@ -19,7 +19,6 @@ const RatingContainer = styled.div`
 const AvatarWrapper = styled.div`
   margin-right: 12px;
   margin-bottom: -12px;
-
 `
 const Title = styled.div`
   padding: 20px 0px 0px 0px;
@@ -50,7 +49,7 @@ const Icon = styled.button`
   i:hover {
     cursor: pointer;
   }
-`
+` 
 
 const Review = ({handleDestroy, handleEdit, title, description, score, id}) => {
 
@@ -62,7 +61,7 @@ const Review = ({handleDestroy, handleEdit, title, description, score, id}) => {
                 <AvatarWrapper> 
                     <Avatar size="small" icon={<UserOutlined />} />
                 </AvatarWrapper>
-                <Rate disabled defaultValue={score} />
+                <Rate disabled value={score} />
             </RatingContainer>
             <Title>
                 {title}

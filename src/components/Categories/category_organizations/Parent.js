@@ -22,16 +22,13 @@ const StyledContainer = styled.div`
 const Parent = ({organization, organizationID, categoryID}) => {
 
     const [categoriesOrganization, setCategoriesOrganization] = useState([]);
-    // const [reviewsOrganization, setReviewssOrganization] = useState([]);
-    // let organizationID=organization.id;
     console.log(organization.avg_score);
     
     useEffect( () => {
-        organizationsList();
-        // reviewsList();
+      categoriesList();
       }, [organizationID, categoriesOrganization.length])
     
-      const organizationsList = () => {
+      const categoriesList = () => {
         axios.get(`http://localhost:3000/organizations/${organizationID}/categories`)
         .then(response => {
           console.log(response);
@@ -39,15 +36,6 @@ const Parent = ({organization, organizationID, categoryID}) => {
         })
         .catch(error => console.log('api errors:', error))
       }
-
-      // const reviewsList = () => {
-      //   axios.get(`http://localhost:3000/organizations/${organizationID}/reviews`)
-      //   .then(response => {
-      //     console.log(response);
-      //     setReviewssOrganization(response.data)
-      //   })
-      //   .catch(error => console.log('api errors:', error))
-      // }
   
   return (
     <StyledRoot>

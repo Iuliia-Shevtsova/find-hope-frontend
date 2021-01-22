@@ -43,11 +43,6 @@ const FormFill = () => {
       }
       
     const plainOptions = ['< 18', '18 +', '65 +'];
-//   const options = [
-//     { label: 'Apple', value: 'Apple' },
-//     { label: 'Pear', value: 'Pear' },
-//     { label: 'Orange', value: 'Orange' },
-//   ];
 
     return (
         <>

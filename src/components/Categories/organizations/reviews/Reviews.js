@@ -1,9 +1,10 @@
 import React, { useState, useEffect, Fragment } from 'react'
 import styled from 'styled-components'
 import axios from 'axios'
-import Review from './Review'
+import Card from './ReviewCard'
 import ReviewForm from './ReviewForm'
 import Header from './Header'
+import { FaCommentAlt, FaThumbsUp, FaRegEye } from 'react-icons/fa'
 
 const StyledContainer = styled.div`
   border-top: 1px solid black;
@@ -43,7 +44,7 @@ const Column = styled.div`
 `
 
 const Main = styled.div`
-  padding-left: 60px;
+  padding-left: 20px;
 `
 
 const Reviews = ({ organizationID, organization_name}) => {
@@ -54,7 +55,7 @@ const Reviews = ({ organizationID, organization_name}) => {
   const [reviews, setReviews] = useState([])
   const [review, setReview] = useState({ title: '', description: '', score: '', date: date,  })
   const [error, setError] = useState('')
-  const [isEdit, setisEdit] = useState(false)
+  const [isEdit, setIsEdit] = useState(false)
   const [EditID, setEditID] = useState(0)
   
 
@@ -82,7 +83,6 @@ console.log(reviews)
   
   const handleSubmit = (e) => {
     e.preventDefault()
-
   
     const organization_id = parseInt(organizationID)
 
@@ -116,7 +116,7 @@ console.log(reviews)
 
   const handleUdate = (title, description, score,e) => {
     e.preventDefault()
-    
+    setIsEdit(false)
     const organization_id = parseInt(organizationID)
 
     const currentReview = {
@@ -133,7 +133,7 @@ console.log(reviews)
       setReviews([...reviews, response.data])
       // setReviews(reviews.filter(p => p.id == id))
 
-      setReview({ title: '', description: '', score: 0 })
+      setReview({ title: '', description: '', score: '' })
       setError('')
     })
     .catch(error => console.log('api errors:', error))
@@ -142,7 +142,7 @@ console.log(reviews)
 
   const handleEdit = (title, description, id, e) => {
     e.preventDefault()
-    setisEdit(true);
+    setIsEdit(true);
     setEditID(id);
     setReview({
       ...review,
@@ -166,10 +166,43 @@ console.log(reviews)
     .catch(error => console.log('api errors:', error))
   }
 
-  const setRating = (score, e) => {
-    e.preventDefault()  
-    setReview({ ...review, score })
+  const setScore = (value, e) => {
+    setReview({
+      ...review,
+      score: value,
+    });
   }
+
+  const onCommentClick = () => alert('You clicked comments')
+  const onLikesClick = () => alert('You clicked comments')
+  const onViewsClick = () => alert('You clicked comments')  
+  const buttons = [
+    {
+      label: (
+        <>
+          <FaCommentAlt /> 0 Comments
+        </>
+      ),
+      onClick: onCommentClick,
+    },
+    {
+      label: (
+        <>
+          <FaThumbsUp /> 24 Likes
+        </>
+      ),
+      onClick: onLikesClick,
+    },
+    {
+      label: (
+        <>
+          <FaRegEye /> 18 Views
+        </>
+      ),
+      onClick: onViewsClick,
+    },
+  ]  
+
 
   if (reviews && reviews.length > 0) {
     total = reviews.reduce((total, review) => total + review.score, 0)
@@ -177,16 +210,18 @@ console.log(reviews)
 
     newReviews = reviews.map( (review, index) => {
       return (
-        <Review 
+        <Card 
           key={index}
           id={review.id}
           handleDestroy={handleDestroy}
           title={review.title}
           description={review.description}
           score={review.score}
-          handleEdit={handleEdit}
-          
+          handleEdit={handleEdit} 
+          date={review.date}
+          actions={buttons}
         />
+
       )
     })  
   }
@@ -205,7 +240,7 @@ console.log(reviews)
               <Header 
                 reviews={reviews}
                 average={average}
-                total={total}
+                total={total} 
               />
               {newReviews}
             </Main>
@@ -217,7 +252,7 @@ console.log(reviews)
               handleSubmit={handleSubmit}
               handleChange={handleChange}
               handleUdate={handleUdate}
-              setRating={setRating}
+              setScore={setScore}
               error={error}
               isEdit={isEdit}
             />
