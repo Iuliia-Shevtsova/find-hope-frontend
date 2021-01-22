@@ -1,46 +1,13 @@
 import React, {useState} from 'react';
 import styled from 'styled-components';
 // import { List, Avatar } from 'antd';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 // import { Card, Col, Row } from 'antd';
-import { Card } from 'antd';
+// import { Card } from 'antd';
 import 'antd/dist/antd.css';
 // import { ThemeProvider } from "styled-components";
 import CardAllCategories from './CardAllCategories'
 
-// const categories = [
-//     {
-//         id: 1,
-//         name: 'Legal Services',
-//         img: ''
-//     },
-//     {
-//         id: 2,
-//         name: 'Health',
-//         img: ''
-//     },
-//     {
-//         id: 3,
-//         name: 'Education',
-//         img: ''
-//     },
-//     {
-//         id: 4,
-//         name: 'Job',
-//         img: ''
-//     },
-//     {
-//         id: 5,
-//         name: 'Food Services',
-//         img: ''
-//     },
-//     {
-//         id: 6,
-//         name: 'English classes',
-//         img: ''
-//     },
-
-// ]
 
 const Container = styled.div`
     max-width: 80%;
@@ -50,19 +17,9 @@ const Container = styled.div`
     margin-bottom: 3rem;
 
     display: flex;
-    ${'' /* flex-wrap: wrap; */}
 
     padding: 50px 12px;
 
-  ${'' /* h3 {
-    flex-basis: 100%;
-    height: 0;
-
-    font-weight: bold;
-    text-align: center;
-    margin: 10px auto;
-    padding-bottom: 2em;
-  } */}
 `;
 
 const SiderMenu  = styled.div`
@@ -71,10 +28,11 @@ const SiderMenu  = styled.div`
     float: left;
     padding: 20px;
     margin: 20px;
-    width: 30%;
+    max-width: 25%;
 `;
 
 const Content = styled.div`
+    max-width: 80%;
     float: right;
     position: relative;
     display: flex;
@@ -118,42 +76,6 @@ const Title  = styled.div`
     ${'' /* background: 'blue'; */}
 `;
 
-
-
-const gridStyle = {
-    width: '30%',
-    textAlign: 'center',
-    // margin: '10px',
-    padding: '0px',
-    flexDirection: 'row',
-    width: '300px', 
-    height: '300px', 
-    margin: '20px',
-    
-};
-
-const CardItem  = styled.div`
-    width: '30%';
-    textAlign: 'center';
-    margin: '10px';
-    padding: '0px';
-    flexDirection: 'row';
-    width: '300px'; 
-    height: '300px'; 
-    margin: '20px';
-    background: white;
-`;
-
-const StyledRoot = styled.div`
-  padding: 50px 12px;
-`
-const StyledContainer = styled.div`
-  max-width: 80%;
-  width: 100%;
-  margin: auto;
-  display: flex;
-    flex-wrap: wrap;
-` 
 
 const AllCategories = ({categories, organizations, match}) => {
 

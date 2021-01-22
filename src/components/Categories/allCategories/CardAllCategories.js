@@ -61,7 +61,7 @@ const AButton = styled.button`
 //     }
 // `
 
-const imgUrl = (id) => require(`./img/${id}.png`).default;
+const imgUrl = (id) => require(`../img/${id}.png`).default;
 
 const CardAllCategories = ({ category, organizations, match}) => {
 

@@ -5,9 +5,10 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import './css/style.css';
 import Navbar from './components/Navbar';
 import Landing from './components/Landing';
-import Category from './components/Categories/Category';
-import AllCategories from './components/Categories/AllCategories';
-import Organization from './components/Categories/Organization';
+import Category from './components/Categories/category_organizations/Category';
+import ReviewCardParent from './components/Categories/organizations/reviews/ReviewCardParent';
+import AllCategories from './components/Categories/allCategories/AllCategories';
+import Organization from './components/Categories/organizations/Organization';
 import GlobalStyle from './css/GlobalStyle';
 // import { ThemeProvider } from "styled-components";
 import 'antd/dist/antd.css';
@@ -82,11 +83,17 @@ function App() {
             <Route 
               exact path="/category/:id/organizations"
               render={props => (
-              <Category {...props} categories={categories} organizations={organizations}/>
+              <Category {...props} categories={categories} />
               )}
             />
-            {/* <Route exact path="/category" component={Category} /> */}
-            <Route path="/category/:id/organizations/:org_id" component={Organization} />
+            <Route exact path="/review" component={ReviewCardParent} />
+            <Route 
+              path="/category/:id/organizations/:org_id"
+              render={props => (
+              <Organization {...props} organizations={organizations}/>
+              )}
+            />
+            {/* <Route path="/category/:id/organizations/:org_id" component={Organization} /> */}
           </Switch>
     </Router>
   );

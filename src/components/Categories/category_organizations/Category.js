@@ -6,10 +6,11 @@ import axios from 'axios'
 // import { Card } from 'antd';
 import 'antd/dist/antd.css';
 import CardItem from './CardItem';
+import Parent from './Parent';
 // import { ThemeProvider } from "styled-components";
 
 const Container = styled.div`
-max-width: 80%;
+    max-width: 80%;
     margin: auto;
     overflow: hidden;
     margin-top: 6rem;
@@ -19,18 +20,8 @@ max-width: 80%;
     ${'' /* flex-wrap: wrap; */}
 
     padding: 50px 12px;
-    ${'' /* max-width: 80%;
-    margin: auto;
-    overflow: hidden;
-    padding: 0 2rem;
-    margin-top: 6rem;
-    margin-bottom: 3rem;
 
-    display: flex;
-    flex-wrap: wrap;
-
-
-  h3 {
+  ${'' /* h3 {
     flex-basis: 100%;
     height: 0;
 
@@ -47,37 +38,15 @@ const SiderMenu  = styled.div`
     float: left;
     padding: 20px;
     margin: 20px;
-    width: 30%;
-`;
-
-const C = styled.div`
-    float: right;
-    position: relative;
-
-    ${'' /* display: flex;
-    flex-wrap: wrap; */}
-
-    h1{
-      box-sizing: border-box;
-    color: #FFF;
-    line-height: 36px;
-    min-height: 74px;
-    padding-left: 100px !important;
-    position: relative;
-    background: #D59740;
-    padding: 15px;
-      ${'' /* display: flex;
-  flex-direction: column;
-  align-items: flex-start; */}
-    }
+    max-width: 25%;
 `;
 
 const Content = styled.div`
-
-    ${'' /* float: right; */}
-    ${'' /* position: relative; */}
+    float: right;
+    position: relative;
     display: flex;
-    ${'' /* flex-wrap: wrap; */}
+    flex-wrap: wrap;
+    width: 100%;
 `;
 
 const Button = styled.button`
@@ -104,6 +73,28 @@ const Button = styled.button`
         font-size: 1rem;
     }
 `
+const C = styled.div`
+    max-width: 75%; 
+    float: right;
+    position: relative;
+
+    
+
+    h1{
+      box-sizing: border-box;
+    color: #FFF;
+    line-height: 36px;
+    min-height: 74px;
+    padding-left: 100px !important;
+    position: relative;
+    background: #D59740;
+    padding: 15px;
+    margin: 15px;
+      ${'' /* display: flex;
+  flex-direction: column;
+  align-items: flex-start; */}
+    }
+`;
 
 const Category = ({categories, match}) => {
   const inialTheme = '';
@@ -117,7 +108,8 @@ const Category = ({categories, match}) => {
 
   useEffect( () => {
     organizationsList();
-  }, [categoryID])
+  // }, [categoryID])
+  }, [categoryID, organizationsCategory.length])
 
   const organizationsList = () => {
     axios.get(`http://localhost:3000/categories/${categoryID}/organizations`)
@@ -128,18 +120,6 @@ const Category = ({categories, match}) => {
     .catch(error => console.log('api errors:', error))
   }
 
-  // const organizationsList = () => {
-  //   fetch("http://localhost:3000/categories/categoryID/organizations", {
-  //     method: "GET",
-  //     headers: {
-  //       "Content-Type": "application/json"
-  //     }
-  //   })
-  //   .then(response => response.json())
-  //   .then(data => console.log(data))
-  //   .catch(err => console.error(err));
-  // }
-
   return (
       <Container>
       <SiderMenu>
@@ -149,12 +129,12 @@ const Category = ({categories, match}) => {
         <C>
         <h1>Category {categoryID}</h1>
         <Content>
-        {/* <h3>{categories[0].name}</h3> */}
-        
+
         {organizationsCategory.map((organization) => (
-          <CardItem 
+          <Parent 
             key={organization.id} 
             organization={organization}
+            organizationID={organization.id}
             categoryID={categoryID}
           />
         ))}

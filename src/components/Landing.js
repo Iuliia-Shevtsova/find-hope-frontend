@@ -50,30 +50,23 @@ const PageDescription = styled.p`
     font-size: 1.5rem;
     margin-bottom: 1.5rem;
     font-weight: bold;
+    width: 80%;
 `;
-
-// const Buttons = styled.div`
-
-// `;
 
 
 const Landing = () => {
-// const Landing = ({ isAuthenticated }) => {
-//     if (isAuthenticated) return <Redirect to="/dashboard" />;
   
     return (        
         <Background imgUrl={imgUrl}>
             <Overlay>
             <PageText>
-                <PageName>FIND HOPE</PageName>
+                <PageName>NY Doors</PageName>
                 <PageDescription>
-                To find organization that match all categories you need fill the form below.
+                To find organizations that match your needs, including your age, language and location 
+                fill the FORM below.
                 </PageDescription>
                 <div>
                 <FormFill/>
-                {/* <Link to="/form" className="btn">
-                    Fill form
-                </Link> */}
                 </div>
             </PageText>
             </Overlay>
@@ -82,12 +75,6 @@ const Landing = () => {
 };
   
 // Landing.propTypes = {
-// isAuthenticated: PropTypes.bool,
 // };
 
-// const mapStateToProps = (state) => ({
-// isAuthenticated: state.auth.isAuthenticated,
-// });
-
-// export default connect(mapStateToProps)(Landing);
 export default Landing;
