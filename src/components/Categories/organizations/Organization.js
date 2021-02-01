@@ -20,6 +20,7 @@ const SiderMenu  = styled.div`
     padding: 20px;
     margin: 20px;
     max-width: 25%;
+    height: 500px;
 `;
 
 const Content = styled.div`

@@ -39,14 +39,40 @@ const SiderMenu  = styled.div`
     padding: 20px;
     margin: 20px;
     max-width: 25%;
+    height: 500px;
 `;
 
 const Content = styled.div`
-    float: right;
-    position: relative;
-    display: flex;
-    flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: auto auto;
+  grid-gap: 10px;
+
+  @media (max-width: 1700px) {
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: auto auto;
+  }
+
+  @media (max-width: 1350px) {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto;
+    width: 80%;
+  }
+
+  @media (max-width: 1200px) {
+    width: 90%;
+  }
+
+  @media (max-width: 1024px) {
     width: 100%;
+  }
+
+  @media (max-width: 950px) {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto;
+    width: 80%;
+  }
+
 `;
 
 const Button = styled.button`
@@ -77,8 +103,7 @@ const C = styled.div`
     max-width: 75%; 
     float: right;
     position: relative;
-
-    
+  
 
     h1{
       box-sizing: border-box;
@@ -129,7 +154,6 @@ const Category = ({categories, match}) => {
         <C>
         <h1>Category {categoryID}</h1>
         <Content>
-
         {organizationsCategory.map((organization) => (
           <Parent 
             key={organization.id} 
