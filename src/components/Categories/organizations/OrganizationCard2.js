@@ -10,7 +10,7 @@ const StyledContainer = styled.div`
   padding: 0;
   ${'' /* background: rgba(32,178,170, 0.5);
   background: linear-gradient(45deg, white, rgba(32,178,170, 0.5)); */}
-  width: 100%
+  width: 100%;
 `
 
 const GridContainer = styled.div`
@@ -18,6 +18,8 @@ const GridContainer = styled.div`
   grid-template-columns: 60% auto;
   grid-template-rows: 120px auto auto;
   width: 100%;
+  ${'' /* width: 300px; */}
+
 `
 const GridItemHeader = styled.div`
     grid-column-start: 1;
