@@ -83,7 +83,7 @@ const Organization = ({organizations, match}) => {
       }, [organizationID, categoriesOrganization.length])
     
       const organizationInfo = () => {
-        axios.get(`http://localhost:3000/organizations/${organizationID}`)
+        axios.get(`https://nydoors.herokuapp.com/organizations/${organizationID}`)
         .then(response => {
           console.log(response);
           setOrganization(response.data)
@@ -96,7 +96,7 @@ const Organization = ({organizations, match}) => {
     console.log(organization.avg_score);
     
       const categoriesList = () => {
-        axios.get(`http://localhost:3000/organizations/${organizationID}/categories`)
+        axios.get(`https://nydoors.herokuapp.com/organizations/${organizationID}/categories`)
         .then(response => {
           console.log(response);
           setCategoriesOrganization(response.data)

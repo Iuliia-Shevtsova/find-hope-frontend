@@ -137,7 +137,7 @@ const Category = ({categories, match}) => {
   }, [categoryID, organizationsCategory.length])
 
   const organizationsList = () => {
-    axios.get(`http://localhost:3000/categories/${categoryID}/organizations`)
+    axios.get(`https://nydoors.herokuapp.com/categories/${categoryID}/organizations`)
     .then(response => {
       console.log(response);
       setOrganizationsCategory(response.data)

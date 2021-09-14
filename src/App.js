@@ -17,15 +17,15 @@ import 'antd/dist/antd.css';
 // const [theme, setTheme] = useState({ background: 'none' })
 
 // useEffect = () => {
-//   if (document.URL==='http://localhost:3000/categories')
+//   if (document.URL==='https://nydoors.herokuapp.com/categories')
 //     setTheme({ background: 'rgb(0, 50, 78)' });
-//   else if (document.URL==='http://localhost:3000/')
+//   else if (document.URL==='https://nydoors.herokuapp.com/')
 //     setTheme({ background: 'none' });
 //   end;
 // } 
 
 
-// const theme = (document.URL==='http://localhost:3000/')?
+// const theme = (document.URL==='https://nydoors.herokuapp.com/')?
 // { 
 //   background: 'none' 
 // }:
@@ -48,7 +48,7 @@ function App() {
 
 
   const categoriesList = () => {
-    axios.get('http://localhost:3000/categories')
+    axios.get('https://nydoors.herokuapp.com/categories')
     .then(response => {
       console.log(response);
       setCategories(response.data);
@@ -57,7 +57,7 @@ function App() {
   }
 
   const organizationsList = () => {
-    axios.get('http://localhost:3000/organizations')
+    axios.get('https://nydoors.herokuapp.com/organizations')
     .then(response => {
       console.log(response);
       setOrganizations(response.data)

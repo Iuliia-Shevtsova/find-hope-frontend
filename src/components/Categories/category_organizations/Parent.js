@@ -34,7 +34,7 @@ const Parent = ({organization, organizationID, categoryID}) => {
       }, [organizationID, categoriesOrganization.length])
     
       const categoriesList = () => {
-        axios.get(`http://localhost:3000/organizations/${organizationID}/categories`)
+        axios.get(`https://nydoors.herokuapp.com/organizations/${organizationID}/categories`)
         .then(response => {
           console.log(response);
           setCategoriesOrganization(response.data)

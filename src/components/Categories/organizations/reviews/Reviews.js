@@ -70,7 +70,7 @@ const Reviews = ({ organizationID, organization_name}) => {
   }, [reviews.length])
 
   const getReviews = () => {
-    axios.get(`http://localhost:3000/organizations/${organizationID}/reviews`)
+    axios.get(`https://nydoors.herokuapp.com/organizations/${organizationID}/reviews`)
     .then(response => {
       console.log(response);
       setReviews(response.data)
@@ -96,7 +96,7 @@ console.log(reviews)
     console.log(review)
     console.log(lastReview)
 
-    axios.post(`http://localhost:3000/reviews`, lastReview)
+    axios.post(`https://nydoors.herokuapp.com/reviews`, lastReview)
     .then(response => {
       console.log(response);
       setReviews([...reviews, response.data])
@@ -127,7 +127,7 @@ console.log(reviews)
       organization_id: organization_id,
     }
 
-    axios.patch(`http://localhost:3000/reviews/${EditID}`, currentReview)
+    axios.patch(`https://nydoors.herokuapp.com/reviews/${EditID}`, currentReview)
     .then(response => {
       console.log(response);
       setReviews([...reviews, response.data])
@@ -158,7 +158,7 @@ console.log(reviews)
   const handleDestroy = (id, e) => {
     e.preventDefault()
     
-    axios.delete(`http://localhost:3000/reviews/${id}`)
+    axios.delete(`https://nydoors.herokuapp.com/reviews/${id}`)
     .then( (data) => {
       filterReviews(id)
       console.log(data)
